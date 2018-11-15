@@ -1,51 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-	int sum(int a, int b)
-	{return a+b;
-	}
-	int sub(int a, int b)
+	void print_image(int image[5][5])
 	{
-	return a-b;
+	int i,j;
+	int *ptr = &image[0][0];
+	 
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+		printf("%d", *ptr);
+		ptr=ptr+1;
+		}
+	printf("\n");
 	}
-	int mul(int a, int b){
-	return a*b;
 	}
-	int div1(int a, int b)
-	{	return a/b;
+	
+void brighten_image(int image[5][5])
+	{
+	int i,j;
+	int *ptr = &image[0][0];
+	 
+	for(i=0;i<5;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+		*ptr=*ptr+10;
+		ptr=ptr+1;
+		}
+	printf("\n");
+	}
 	}
 	
 int main(int argc, char *argv[]) {
 	
+	int image[5][5] = {
+	{10,20,30,40,50},
+	{10,20,30,40,50},
+	{10,20,30,40,50},
+	{10,20,30,40,50},
+	{10,20,30,40,50},
+	};
 	
-	int(*calft)(int, int);
-	int a,b;
-	char op;
+	print_image(image);
 	
+	brighten_image(image);
+	
+	print_image(image);
 
-	printf("input calculation : ");
-	scanf("%d %c %d", &a, &op, &b);
-	
-	switch(op)
-	{
-		case '+':
-			calft=sum;
-			break;
-		
-		case '-':
-			calft=sub;
-			break;
-			
-		case '*':
-			calft=mul;
-			break;
-		
-		case '/':
-			calft=div1;
-			break;
-	}
-	
-	printf("°á°ú°ª %i", calft(a,b));
-	
 	return 0;
 }
